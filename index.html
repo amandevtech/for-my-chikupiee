@@ -1,0 +1,498 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>For My Chikupie 💖</title>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: radial-gradient(circle at top, #1b2735, #090a0f 70%);
+            overflow-x: hidden;
+            color: white;
+            cursor: none;
+        }
+
+        .galaxy,
+        .overlay {
+            position: fixed;
+            width: 100%;
+            height: 100%;
+        }
+
+        .galaxy {
+            z-index: -5;
+        }
+
+        .overlay {
+            background: radial-gradient(circle, transparent, rgba(0, 0, 0, 0.65));
+            z-index: -4;
+        }
+
+        .star {
+            position: absolute;
+            background: white;
+            border-radius: 50%;
+            animation: twinkle 3s infinite alternate;
+        }
+
+        @keyframes twinkle {
+            from {
+                opacity: 0.2;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        .floating-heart,
+        .rose {
+            position: fixed;
+            animation: floatUp linear infinite;
+        }
+
+        .rose {
+            top: -50px;
+            animation: roseFall linear infinite;
+        }
+
+        @keyframes floatUp {
+            to {
+                transform: translateY(-120vh);
+                opacity: 0;
+            }
+        }
+
+        @keyframes roseFall {
+            to {
+                transform: translateY(120vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        .cursor {
+            position: fixed;
+            width: 18px;
+            height: 18px;
+            background: hotpink;
+            border-radius: 50%;
+            pointer-events: none;
+            filter: blur(8px);
+            z-index: 999;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 950px;
+            margin: 40px auto;
+            padding: 45px;
+            border-radius: 35px;
+            background: rgba(255, 255, 255, 0.08);
+            backdrop-filter: blur(18px);
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.4rem;
+            color: #ff9ad5;
+            text-shadow: 0 0 35px hotpink;
+        }
+
+        .subtitle {
+            margin-top: 15px;
+            font-size: 1.2rem;
+            color: #ffe4ef;
+        }
+
+        #typing {
+            margin-top: 30px;
+            font-size: 1.4rem;
+            min-height: 80px;
+        }
+
+        .heart {
+            font-size: 90px;
+            animation: heartbeat 1.2s infinite;
+        }
+
+        @keyframes heartbeat {
+
+            0%,
+            100% {
+                transform: scale(1);
+            }
+
+            50% {
+                transform: scale(1.2);
+            }
+        }
+
+        .slideshow img {
+            width: 280px;
+            height: 280px;
+            border-radius: 30px;
+            border: 4px solid pink;
+            box-shadow: 0 0 40px hotpink;
+        }
+
+        button {
+            margin-top: 30px;
+            padding: 16px 40px;
+            border: none;
+            border-radius: 40px;
+            background: linear-gradient(to right, #ff4d6d, #ff99c8);
+            color: white;
+            cursor: pointer;
+        }
+
+        .section-title {
+            margin-top: 60px;
+            font-size: 2rem;
+            color: #ffb3d9;
+        }
+
+        .note,
+        .journey-box,
+        .quotes-box,
+        .ending {
+            margin-top: 15px;
+            padding: 20px;
+            border-radius: 20px;
+            background: rgba(255, 255, 255, 0.08);
+        }
+
+        .countdown {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .time-box {
+            padding: 18px;
+            min-width: 105px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 20px;
+        }
+
+        .progress {
+            width: 100%;
+            height: 25px;
+            background: #ffffff20;
+            border-radius: 30px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(to right, #ff4d6d, #ff99c8);
+            animation: fillLove 7s forwards;
+        }
+
+        @keyframes fillLove {
+            to {
+                width: 100%;
+            }
+        }
+
+        .footer {
+            margin-top: 60px;
+            color: #ffd6e7;
+        }
+
+        @media(max-width:600px) {
+            h1 {
+                font-size: 2.1rem;
+            }
+
+            .slideshow img {
+                width: 200px;
+                height: 200px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="galaxy"></div>
+    <div class="overlay"></div>
+    <div class="cursor"></div>
+
+    <div class="container">
+
+        <h1>WRITTEN & PRODUCED BY CHIKU 💝🥰</h1>
+        <div class="subtitle">FOR HER CHIKUPIE 💖</div>
+
+        <h2 id="typing"></h2>
+        <div class="heart">❤️</div>
+
+        <img id="gallery" src="photo1.jpg"
+            style="display:none;width:280px;height: 280px;border-radius: 30px;border: 4px solid pink;box-shadow: 0 0 40px hotpink;">
+
+        <button onclick="showPhotos();playMusic();">watch the beauty 💖</button>
+
+        <button onclick="openLetter();playMusic();fireworks();">
+            Open My Heart 💌
+        </button>
+
+        <!-- LETTER -->
+        <div id="secretLetter">
+            Aapke har aansu mere liye bahut important hain 🥺
+            Main kabhi nahi chahta ki aap dukhi ho.
+            Aap meri duniya, meri peace aur meri sabse special insaan hain 💖
+            Main hamesha aapke saath rahunga har situation me 💝
+        </div>
+
+        <!-- 💖 NEW SECTION 1 -->
+        <h2 class="section-title">Random Thoughts About You 💭</h2>
+        <div class="note">
+            Kabhi kabhi bina reason bhi aapka khayal aata hai… aur main bas smile kar deta hu 🥺💖
+        </div>
+        <div class="note">
+            Aapko pata bhi nahi hota, lekin aap mere din ka sabse peaceful part ho 🌙
+        </div>
+        <div class="note">
+            Main har choti cheez me aapko imagine karta hu… jaise aap hamesha mere paas ho 💝
+        </div>
+
+        <!-- LOVE BAR -->
+        <div class="progress">
+            <div class="progress-bar"></div>
+        </div>
+
+        <!-- TIMER 1 -->
+        <h2 class="section-title">Since We Met 🌸</h2>
+        <div class="countdown">
+            <div class="time-box">
+                <h2 id="loveDays">0</h2>
+                <p>Days</p>
+            </div>
+            <div class="time-box">
+                <h2 id="loveHours">00</h2>
+                <p>Hours</p>
+            </div>
+            <div class="time-box">
+                <h2 id="loveMinutes">00</h2>
+                <p>Minutes</p>
+            </div>
+            <div class="time-box">
+                <h2 id="loveSeconds">00</h2>
+                <p>Seconds</p>
+            </div>
+        </div>
+
+        <!-- TIMER 2 -->
+        <h2 class="section-title">Since You Became Mine 💍</h2>
+        <div class="countdown">
+            <div class="time-box">
+                <h2 id="loveDays2">0</h2>
+                <p>Days</p>
+            </div>
+            <div class="time-box">
+                <h2 id="loveHours2">00</h2>
+                <p>Hours</p>
+            </div>
+            <div class="time-box">
+                <h2 id="loveMinutes2">00</h2>
+                <p>Minutes</p>
+            </div>
+            <div class="time-box">
+                <h2 id="loveSeconds2">00</h2>
+                <p>Seconds</p>
+            </div>
+        </div>
+
+        <!-- 💖 NEW SECTION 2 -->
+        <h2 class="section-title">If You Are Sad 🥺</h2>
+        <div class="note">
+            Agar kabhi aapko lage ki sab heavy hai… bas yaad rakhna main aapke saath hu 💖
+        </div>
+        <div class="note">
+            Main aapka problem solve nahi kar paun shayad, lekin main aapko kabhi akela nahi chhodunga 🌸
+        </div>
+        <div class="note">
+            Aapko akela feel karne ka haq hi nahi hai… kyunki main hamesha aapke paas hu 🥺💝
+        </div>
+
+        <!-- WHY I LOVE YOU -->
+        <h2 class="section-title">Why I Love You 🌸</h2>
+        <div class="note">Aapki smile meri duniya hai 💖</div>
+        <div class="note">Aap meri peace aur happiness hain 💝</div>
+        <div class="note">Aapke saath har moment special lagta hai ✨</div>
+        <div class="note">Main hamesha aapko khush dekhna chahta hu 🥺</div>
+
+        <!-- STUDY -->
+        <h2 class="section-title">Something About Study 📚</h2>
+        <div class="note">
+            Main aapke study time me aapke saath hu. Aap stress mat lijiye. Main aapka support, motivation aur strength
+            banunga 💖
+        </div>
+
+        <!-- LITTLE THINGS -->
+        <h2 class="section-title">Little Things 💌</h2>
+        <div class="note">
+            Roz time pe pani peena apni cute bottle se 💖
+            Mandir jana aur apni prayers kabhi miss mat karna 🌸
+            Apna khayal rakhna, time pe khana khana aur hamesha apni smile ko zinda rakhna 🥰
+            Main hamesha aapke saath hu… silently, but always 💝
+        </div>
+
+        <!-- 💖 NEW SECTION 3 -->
+        <h2 class="section-title">Things I Wish I Could Do 💌</h2>
+        <div class="note">
+            Kaash main har din aapko hug kar paata jab aap thak jati ho 🥺
+        </div>
+        <div class="note">
+            Kaash main aapke saare stress apne paas le sakta 💖
+        </div>
+        <div class="note">
+            Kaash main hamesha aapke saamne hota jab aap smile karti ho 🌸
+        </div>
+
+        <!-- JOURNEY -->
+        <h2 class="section-title">Our Journey 💫</h2>
+
+        <div class="journey-box">
+            15 April wo din tha jab main aapka sabse pyaara bestu bana 💖
+        </div>
+
+        <div class="journey-box">
+            21 April meri life ka world's best day ban gaya 💍💖
+        </div>
+
+        <div class="journey-box">
+            Thank you meri har wish puri karne ke liye 💝
+        </div>
+
+        <div class="journey-box">
+            Main bhi promise karta hu ki main aapki har wish puri karunga 💖
+        </div>
+
+        <!-- 💖 NEW SECTION 4 -->
+        <h2 class="section-title">My Promise 💍</h2>
+        <div class="note">
+            Main perfect nahi hu… lekin main loyal rahunga 💖
+        </div>
+        <div class="note">
+            Main hamesha aapko respect aur care dunga 🌸
+        </div>
+        <div class="note">
+            Main kabhi jaanbujh kar aapko hurt nahi karunga 🥺
+        </div>
+        <div class="note">
+            Aur main hamesha aapko choose karunga 💝
+        </div>
+
+        <!-- QUOTES -->
+        <div class="quotes-box">
+            <h2 class="section-title">Little Thoughts 💌</h2>
+            <p id="quote"></p>
+        </div>
+
+        <!-- ENDING -->
+        <div class="ending">
+            <h2 class="section-title">Ek Last Baat 💞</h2>
+            <p>
+                Main aapko sirf pyaar nahi karta… main aapko apni life ka sabse important hissa maanta hu 🥺💖<br><br>
+
+                Aap meri har subah ki pehli soch aur har raat ki aakhri dua ho 🌙<br><br>
+
+                Agar kabhi aap gir jao, main aapko uthaoonga…
+                Agar aap thak jao, main aapko sambhaloonga…
+                Aur agar aap ro do, main aapki smile wapas launga 💝<br><br>
+
+                Main hamesha yahin hu… aapke liye 💖<br>
+                Silent, loyal aur fully yours 🥰<br><br>
+
+                I love you meri chikupie ❤️
+            </p>
+        </div>
+
+        <div class="footer">
+            Made with endless love by yours Chiku 🥰💝😘
+        </div>
+
+    </div>
+
+    <audio loop>
+        <source src="song.mp3">
+    </audio>
+
+    <script>
+        function playMusic() {
+            document.queryselector("audio").play();
+        }
+        function showPhotos() {
+            let photos = ["photo1.jpg", "photo2.jpg", "photo3.jpg", "photo4.jpg"];
+            let i = 0;
+
+            let
+                img = document.getElementById("gallery");
+            img.style.display = "block";
+
+            img.src = photos[i];
+
+
+            setInterval(() => {
+                i++;
+
+                if (i >= photos.length) {
+                    i = 0;
+                }
+
+                img.src = photos[i];
+            }, 3000);
+        }
+        document.addEventListener("DOMContentLoaded", () => {
+
+            const meetDate = new Date("2026-04-15T00:00:00");
+            const loveDate = new Date("2026-04-21T00:00:00");
+
+            setInterval(() => {
+                const now = new Date();
+
+                let d1 = Math.max(0, now - meetDate);
+                document.getElementById("loveDays").innerText = Math.floor(d1 / 86400000);
+                document.getElementById("loveHours").innerText = Math.floor(d1 / 3600000 % 24);
+                document.getElementById("loveMinutes").innerText = Math.floor(d1 / 60000 % 60);
+                document.getElementById("loveSeconds").innerText = Math.floor(d1 / 1000 % 60);
+
+                let d2 = Math.max(0, now - loveDate);
+                document.getElementById("loveDays2").innerText = Math.floor(d2 / 86400000);
+                document.getElementById("loveHours2").innerText = Math.floor(d2 / 3600000 % 24);
+                document.getElementById("loveMinutes2").innerText = Math.floor(d2 / 60000 % 60);
+                document.getElementById("loveSeconds2").innerText = Math.floor(d2 / 1000 % 60);
+
+            }, 1000);
+
+            const quotes = [
+                "Aap meri safest place hain 🥺",
+                "Aap meri duniya hain 💖",
+                "Aap meri peace hain 💝"
+            ];
+
+            let q = 0;
+            setInterval(() => {
+                document.getElementById("quote").innerText = quotes[q];
+                q = (q + 1) % quotes.length;
+            }, 3500);
+
+        });
+    </script>
+
+</body>
+
+</html>
